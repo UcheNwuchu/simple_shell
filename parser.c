@@ -63,7 +63,7 @@ char *find_path(info_t *info, char *pathstr, char *cmd)
 	}
 	while (1)
 	{
-		if (!pathstr[i] || pathstr[j] == ':')
+		if (!pathstr[j] || pathstr[j] == ':')
 		{
 			path = dup_chars(pathstr, curr_pos, j);
 			if (!*path)

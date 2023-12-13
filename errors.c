@@ -32,8 +32,8 @@ if (d == BUF_FLUSH || j >= WRITE_BUF_SIZE)
 write(2, buf, j);
 j = 0;
 }
-if (c != BUF_FLUSH)
-buf[j++] = c;
+if (d != BUF_FLUSH)
+buf[j++] = d;
 return (1);
 }
 
@@ -55,7 +55,7 @@ write(fd, buf, j);
 j = 0;
 }
 if (d != BUF_FLUSH)
-buf[i++] = d;
+buf[j++] = d;
 return (1);
 }
 

@@ -2,7 +2,7 @@
 
 /**
  * _erratoi - to convert a string to an integer
- * @s: the string to be converted
+ * @t: the string to be converted
  * Return: 0 if no numbers in string, converted number otherwise
  * -1 on error
  */
@@ -12,12 +12,12 @@ int j = 0;
 unsigned long int result = 0;
 if (*t == '+')
 t++;  /* TODO: why does this make main return 255? */
-for (j = 0;  s[j] != '\0'; j++)
+for (j = 0;  t[j] != '\0'; j++)
 {
-if (s[j] >= '0' && s[j] <= '9')
+if (t[j] >= '0' && t[j] <= '9')
 {
 result *= 10;
-result += (s[j] - '0');
+result += (t[j] - '0');
 if (result > INT_MAX)
 return (-1);
 }
@@ -123,7 +123,7 @@ void remove_comments(char *buf)
 {
 int j;
 for (j = 0; buf[j] != '\0'; j++)
-if (buf[i] == '#' && (!j || buf[j - 1] == ' '))
+if (buf[j] == '#' && (!j || buf[j - 1] == ' '))
 {
 buf[j] = '\0';
 break;
