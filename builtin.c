@@ -1,98 +1,87 @@
 #include "shell.h"
 
 /**
- * _myexit - A function to exit the shell
- * @info: Structure containing potential arguments. 
- * Used to maintain
- * constant function prototype.
- * Return: exits with a given exit status
- *(0) if info.argv[0] != "exit"
+ *  call_exit - To Exits shell
+ *
+ *  @args: passes in char pointer
+ *
+ *  Return: Integer
  */
-int _myexit(info_t *info)
-{
-	int exitcheck;
 
-	if (info->argv[1])  /* If there is an exit arguement */
-	{
-		exitcheck = _erratoi(info->argv[1]);
-		if (exitcheck == -1)
-		{
-			info->status = 2;
-			print_error(info, "Illegal number: ");
-			_eputs(info->argv[1]);
-			_eputchar('\n');
-			return (1);
-		}
-		info->err_num = _erratoi(info->argv[1]);
-		return (-2);
-	}
-	info->err_num = -1;
-	return (-2);
+void call_exit(char **args)
+{
+	free(*args);
+	free(args);
+	exit(EXIT_SUCCESS);
 }
 
 /**
- * _mycd - Makes changes to the current directory of the process
- * @info: Structure containing potential arguments.
- * Used to maintain constant function prototype.
- *  Return: Always 0
+ *  call_exit_status - Exit with a status
+ *
+ *  @args: Double pointer
+ *
+ *  Return: void
  */
-int _mycd(info_t *info)
-{
-	char *s, *dir, buffer[1024];
-	int chdir_ret;
 
-	s = getcwd(buffer, 1024);
-	if (!s)
-		_puts("TODO: >>getcwd failure emsg here<<\n");
-	if (!info->argv[1])
+
+int call_exit_status(char **args)
+{
+	int status;
+
+	status = _exit_atoi(args[1]);
+
+	if (status == -1)
 	{
-		dir = _getenv(info, "HOME=");
-		if (!dir)
-			chdir_ret = /* TODO: what should this be? */
-				chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
+		perror("hsh");
+		return (0);
+	}
+	else
+	{
+		exit(status);
+	}
+}
+
+
+/**
+ *  call_cd - Change directory
+ *
+ *  @args: Passes in char pointer
+ *
+ *  Return: Integer
+ */
+
+int call_cd(char **args)
+{
+	char *targetDir = NULL, *home = NULL;
+
+	home = _getenv(environ, "HOME");
+
+	if (args[1])
+	{
+		/* For cd ~ go home */
+		if (_strcmp(args[1], "~"))
+		{
+			targetDir = home;
+		}
+		/* cd - goes to previos directory */
+		else if (_strcmp(args[1], "-"))
+			targetDir = _getenv(environ, "OLDPWD");
 		else
-			chdir_ret = chdir(dir);
-	}
-	else if (_strcmp(info->argv[1], "-") == 0)
-	{
-		if (!_getenv(info, "OLDPWD="))
-		{
-			_puts(s);
-			_putchar('\n');
-			return (1);
-		}
-		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
-		chdir_ret = /* TODO: what should this be? */
-			chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
+			targetDir = args[1];
 	}
 	else
-		chdir_ret = chdir(info->argv[1]);
-	if (chdir_ret == -1)
-	{
-		print_error(info, "can't cd to ");
-		_eputs(info->argv[1]), _eputchar('\n');
-	}
+		targetDir = home;
+
+	if (targetDir == home)
+		chdir(targetDir);
+
+	/* F_OK tests if there */
+	/* R_OK grants read permissions */
+	else if (access(targetDir, F_OK | R_OK) == 0)
+		chdir(targetDir);
 	else
-	{
-		_setenv(info, "OLDPWD", _getenv(info, "PWD="));
-		_setenv(info, "PWD", getcwd(buffer, 1024));
-	}
-	return (0);
-}
-
-/**
- * _myhelp - makes changes to the current directory of the process
- * @info: Structure containing potential arguments.
- * Used to maintain constant function prototype.
- *  Return: Always 0
- */
-int _myhelp(info_t *info)
-{
-	char **arg_array;
-
-	arg_array = info->argv;
-	_puts("help call works. Function not yet implemented \n");
-	if (0)
-		_puts(*arg_array); /* temp att_unused workaround */
+		perror("hsh");
+	/*setenv("OLDPWD", _getenv(environ, "PWD"), 1);*/
+	/*setenv("PWD", getcwd(prevDir, sizeof(prevDir)), 1);*/
 	return (0);
 }
