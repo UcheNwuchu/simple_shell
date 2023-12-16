@@ -2,9 +2,9 @@
 
 /**
  * _strcmp - function that compares two strings.
- * @s1: first parameter
- * @s2: second parameter
- * Return: returns an intiger value
+ * @s1: parameter one
+ * @s2: parameter two
+ * Return: returns an integer value
  */
 
 int _strcmp(char *s1, char *s2)
