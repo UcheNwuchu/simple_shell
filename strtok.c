@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * _strtok - to tokinizes a string
- * @str: string to tokinized
- * @delim: delimeter
+ * _strtok - to tokenize a string
+ * @str: string to tokenized
+ * @delim: delimiter
  * Return: pointer
  */
 
