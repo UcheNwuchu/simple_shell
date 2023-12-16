@@ -3,7 +3,7 @@
 /**
  * stringize - to appends input after #
  * @buffer: input
- * Return:void
+ * Return: void
  */
 
 void stringize(char *buffer)
