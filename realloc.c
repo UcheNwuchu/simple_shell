@@ -2,7 +2,7 @@
 
 /**
  *_realloc - to reallocate a memory block using malloc and free
- * @ptr: array length
+ * @ptr: length of array
  * @old_size: size of old memory
  * @new_size: size of new memory
  * Return: pointer to new memory
