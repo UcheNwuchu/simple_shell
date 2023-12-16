@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * tokenize_cmd - to tokenizes line Of Input
+ * tokenize_cmd - to tokenize line Of Input
  * @message: input
  * Return: list of tokenized input
  */
