@@ -2,8 +2,8 @@
 
 /**
  * _strncmp - To Compare Amount (n) Of Characters Of Two Strings.
- * @s1: A String.
- * @s2: A String.
+ * @s1: String one.
+ * @s2: String two.
  * @n: Amount Of Characters To Compare.
  *
  * Return: 1 If The Strings Don't Match Otherwise 0
