@@ -2,7 +2,7 @@
 
 /**
  * printg - to prints lines of strings
- * @c: string to be printed
+ * @c: string printed
  */
 
 void printg(char *c)
