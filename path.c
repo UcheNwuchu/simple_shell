@@ -2,7 +2,7 @@
 
 /**
  * get_cmd - to search for a command specified by the PATH
- * @command: input command
+ * @command: command input
  * Return: Failure.
  */
 
