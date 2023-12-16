@@ -2,7 +2,7 @@
 
 /**
  * _memset - A function that fills memory with a constant byte.
- * @s: First parameter of the function
+ * @s: parameter one of the function
  * @b: Second parameter of the function
  * @n: Third parameter of the function
  * Return: returns string of characters
