@@ -4,7 +4,7 @@
  * main -the shell driver code
  * @ac: The number of command-line arguments
  * @av: The command-line arguments
- * Return: to indicates an error
+ * Return: to indicate an error
  */
 int main(__attribute__((unused)) int ac, char **av)
 {
