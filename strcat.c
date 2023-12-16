@@ -2,8 +2,8 @@
 
 /**
  * _strcat - function that concatenates two strings.
- * @dest: first parameter passed to the function
- * @src: second parameter passed to the function
+ * @dest: parameter one passed to the function
+ * @src: parameter two passed to the function
  * Return: returns a string of character
  */
 
