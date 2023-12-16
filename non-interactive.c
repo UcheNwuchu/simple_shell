@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * read_file - To read Content of a file
- * @file_name: the name of the file
+ * read_file - To read content of a file
+ * @file_name: file name
  * @av: the command-line arguments
- * Return: 0
+ * Return: 0 (success)
  */
 void read_file(char *file_name, char **av)
 {
