@@ -2,7 +2,7 @@
 
 /**
  * _strdup - to duplicate a string
- * @str: string to debug
+ * @str: string to be debugged
  */
 
 char *_strdup(char *str)
